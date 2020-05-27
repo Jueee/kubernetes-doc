@@ -153,3 +153,12 @@ docker network prune
 
 ![1589938952036](assets/1589938952036.png)
 
+4、无法拉取镜像
+
+```
+$ minikube ssh
+docker@minikube:~$ docker login xxx
+Username: xxx
+Password:
+```
+
