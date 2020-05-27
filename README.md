@@ -9,6 +9,14 @@
 学习资料：
 
 - [学习 Kubernetes 基础知识](learn-kubernetes-basics.md)
+- [通过命令行部署 nginx 镜像](learn-nginx-command.md)
+- [通过配置文件部署 nginx 镜像](learn-nginx-yml.md)
+
+组件相关：
+
+- [yml 配置文件相关](docs-kubernetes-yml.md)
+- [namespaces 相关](docs-kubernetes-namespaces.md)
+- [secret 相关](docs-kubernetes-secret.md)
 
 #### 组件关系总结
 
