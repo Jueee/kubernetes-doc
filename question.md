@@ -51,5 +51,23 @@ The PersistentVolume "mysqldata" is invalid: spec.persistentvolumesource: Forbid
 $ kubectl delete pvc mysqldata -n testnamespace
 ```
 
+#### 问题：删除pv 、pvc 一直卡着
 
+```
+$ kubectl patch pv pvname -p '{"metadata":{"finalizers":null}}'
+```
+
+#### 问题：Vim中复制粘贴缩进错乱问题的解决方案
+
+解决方案：vim进入paste模式，命令如下：
+
+```
+:set paste
+```
+
+解除paste模式：
+
+```
+set nopaste
+```
 
