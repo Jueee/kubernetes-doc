@@ -2,8 +2,8 @@
 
 #### k8s 配置
 
-- [deploy-elasticsearch-7.4.2.yml](yml/deploy-elasticsearch-7.5.0.yml)：配置 `elasticsearch:7.4.2`
-- [deploy-elasticsearch-7.5.0.yml](yml/deploy-elasticsearch-7.5.0.yml)：配置 `elasticsearch:7.5.0`
+- [deploy-elasticsearch-7.4.2.yml](docs/deploy-elasticsearch-7.5.0.yml)：配置 `elasticsearch:7.4.2`
+- [deploy-elasticsearch-7.5.0.yml](docs/deploy-elasticsearch-7.5.0.yml)：配置 `elasticsearch:7.5.0`
 
 #### 验证 es
 
@@ -59,6 +59,15 @@ ip          heap.percent ram.percent cpu load_1m load_5m load_15m node.role mast
           - name: discovery.type
             value: zen
 ```
+
+问题二：集群发现：
+
+```
+  - name: "discovery.zen.ping.unicast.hosts"
+    value: "elasticsearch-discovery"
+```
+
+建立了elasticsearch-discovery服务
 
 #### 参考资料
 

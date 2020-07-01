@@ -20,6 +20,7 @@ Server Version: version.Info{Major:"1", Minor:"18", GitVersion:"v1.18.2", GitCom
 ```shell
 $ vi .profile
 alias k='kubectl'
+alias kg="kubectl get"
 $ source .profile
 ```
 
