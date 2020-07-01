@@ -14,9 +14,9 @@
 
 组件相关：
 
-- [yml 配置文件相关](docs-kubernetes-yml.md)
-- [namespaces 相关](docs-kubernetes-namespaces.md)
-- [secret 相关](docs-kubernetes-secret.md)
+- [yml 配置文件相关](docs/docs-kubernetes-yml.md)
+- [namespaces 相关](docs/docs-kubernetes-namespaces.md)
+- [secret 相关](docs/docs-kubernetes-secret.md)
 
 #### 组件关系总结
 
