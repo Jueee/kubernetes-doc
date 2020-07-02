@@ -31,11 +31,11 @@ $ helm install metrics stable/metrics-server -n metrics-server --namespace kube-
 
 ### 手动下载镜像
 
-可 `k get pod -n kube-system` 查看运行状态，如果一直 `ImagePullBackOff`，可查看 `k describe pod`：
+可 `k get pod -n kube-system` 查看运行状态，如果一直 `ImagePullBackOff`，可查看 `k describe pod`：
 
 ![1590982664566](assets/1590982664566.png)
 
-若默认镜像 `k8s.gcr.io/metrics-server-amd64:v0.3.6` 无法下载，则需手动更新镜像。
+若默认镜像 `k8s.gcr.io/metrics-server-amd64:v0.3.6` 无法下载，则需手动更新镜像。
 
 下载镜像：
 

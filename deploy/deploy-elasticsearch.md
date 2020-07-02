@@ -2,8 +2,8 @@
 
 #### k8s 配置
 
-- [deploy-elasticsearch-7.4.2.yml](docs/deploy-elasticsearch-7.5.0.yml)：配置 `elasticsearch:7.4.2`
-- [deploy-elasticsearch-7.5.0.yml](docs/deploy-elasticsearch-7.5.0.yml)：配置 `elasticsearch:7.5.0`
+- [deploy-elasticsearch-7.4.2.yml](deploy-elasticsearch-7.5.0.yml)：配置 `elasticsearch:7.4.2`
+- [deploy-elasticsearch-7.5.0.yml](deploy-elasticsearch-7.5.0.yml)：配置 `elasticsearch:7.5.0`
 
 #### 验证 es
 
