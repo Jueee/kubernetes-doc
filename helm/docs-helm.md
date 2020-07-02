@@ -85,37 +85,37 @@ spec:
       serviceAccount: deis-database
       containers:
         - name: deis-database
-          image: {{.Values.imageRegistry}}/postgres:{{.Values.dockerTag}}
-          imagePullPolicy: {{.Values.pullPolicy}}
+          image: { {.Values.imageRegistry} }/postgres:{ {.Values.dockerTag} }
+          imagePullPolicy: { {.Values.pullPolicy} }
           ports:
             - containerPort: 5432
           env:
             - name: DATABASE_STORAGE
-              value: {{default "minio" .Values.storage}}
+              value: { {default "minio" .Values.storage} }
 ```
 
 模版语法扩展了 golang/text/template的语法：
 
 ```json
 # 这种方式定义的模版，会去除test模版尾部所有的空行
-{{- define "test"}}
+{ {- define "test"} }
 模版内容
-{{- end}}
+{ {- end} }
  
 # 去除test模版头部的第一个空行
-{{- template "test" }}
+{ {- template "test" } }
 ```
 
 用于yaml文件前置空格的语法：
 
 ```json
 # 这种方式定义的模版，会去除test模版头部和尾部所有的空行
-{{- define "test" -}}
+{ {- define "test" -} }
 模版内容
-{{- end -}}
+{ {- end -} }
  
 # 可以在test模版每一行的头部增加4个空格，用于yaml文件的对齐
-{{ include "test" | indent 4}}
+{ { include "test" | indent 4} }
 ```
 
 ### 创建自己的chart
@@ -142,39 +142,7 @@ mongodb
 
 Templates目录下是yaml文件的模板，遵循[Go template](https://golang.org/pkg/text/template/)语法。使用过[Hugo](https://gohugo.io/)的静态网站生成工具的人应该对此很熟悉。
 
-我们查看下deployment.yaml文件的内容。
-
-```yml
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: {{ template "fullname" . }}
-  labels:
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
-spec:
-  replicas: {{ .Values.replicaCount }}
-  template:
-    metadata:
-      labels:
-        app: {{ template "fullname" . }}
-    spec:
-      containers:
-      - name: {{ .Chart.Name }}
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        ports:
-        - containerPort: {{ .Values.service.internalPort }}
-        livenessProbe:
-          httpGet:
-            path: /
-            port: {{ .Values.service.internalPort }}
-        readinessProbe:
-          httpGet:
-            path: /
-            port: {{ .Values.service.internalPort }}
-        resources:
-{{ toyaml .Values.resources | indent 12 }}
-```
+参考 [deployment.yaml](deployment.yaml) 文件的内容。
 
 这是该应用的Deployment的yaml配置文件，其中的双大括号包扩起来的部分是Go template，其中的Values是在values.yaml文件中定义的：
 
@@ -201,7 +169,7 @@ resources:
     memory: 128Mi
 ```
 
-比如在Deployment.yaml中定义的容器镜像image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"其中的：
+比如在Deployment.yaml中定义的容器镜像image: "{ { .Values.image.repository } }:{ { .Values.image.tag } }"其中的：
 
 - .Values.image.repository就是nginx
 - .Values.image.tag就是stable
