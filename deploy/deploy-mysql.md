@@ -1,4 +1,4 @@
-## build MySQL
+### build MySQL
 
 #### 目的
 
@@ -120,4 +120,46 @@ $ mysql -h172.16.245.196 -P3306 -uroot -p123456
 ```shell
 $ mysql -h127.0.0.1 -P30379 -uroot -p123456
 ```
+
+### 问题处理
+
+#### initialize specified but the data directory
+
+部署后日志报错：
+
+```shell
+$ k logs mysql-66946b4c48-7dngn
+Initializing database
+2020-09-01T10:34:38.008752-00:00 0 [ERROR] --initialize specified but the data directory has files in it. Aborting.
+2020-09-01T10:34:38.008819-00:00 0 [ERROR] Aborting
+```
+
+参考资料：
+
+- https://github.com/docker-library/mysql/issues/186
+- https://dev.mysql.com/doc/refman/5.7/en/server-options.html#option_mysqld_ignore-db-dir
+
+原因：
+
+一个新的ext4磁盘分区通常不为空。有一个`lost+found`目录，已知mysql会阻塞该目录。您可以尝试添加`--ignore-db-dir=lost+found`到，`CMD`以确保确定。
+
+解决方案：
+
+1. 增加启动参数：
+
+   ```
+   name: mysql-master
+   image: mysql:5.7
+   args:
+     - "--ignore-db-dir=lost+found"
+   ```
+
+2. 增加子目录
+
+   ```
+   	volumeMounts:
+   	  - name: mysqldata
+   		subPath: mysql
+   		mountPath: /var/lib/mysql
+   ```
 

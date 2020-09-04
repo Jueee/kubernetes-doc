@@ -1,4 +1,4 @@
-## 安装 kubernetes 客户端 kubectl
+### 安装 kubernetes 客户端 kubectl
 
 #### 安装
 
@@ -22,5 +22,33 @@ $ vi .profile
 alias k='kubectl'
 alias kg="kubectl get"
 $ source .profile
+```
+
+### 授权用户
+
+当使用其他用户时，报错：
+
+```shell
+$ kubectl get node
+The connection to the server localhost:8080 was refused - did you specify the right host or port?
+```
+
+解决方案：
+
+```shell
+# cp -r /home/ddb/.kube/ /home/ant/
+```
+
+若报错：
+
+```shell
+$ kubectl get node
+error: error loading config file "/home/ant/.kube/config": open /home/ant/.kube/config: permission denied
+```
+
+则需赋文件夹权限：
+
+```shell
+# chown -R ant /home/ant/.kube/
 ```
 

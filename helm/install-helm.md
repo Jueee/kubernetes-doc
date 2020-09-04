@@ -7,7 +7,6 @@ $ wget https://get.helm.sh/helm-v3.2.1-linux-amd64.tar.gz
 $ tar -zxvf helm-v3.2.1-linux-amd64.tar.gz
 $ cd linux-amd64/
 $ cp helm /usr/local/bin/
-$ cp tiller /usr/local/bin/
 ```
 
 查看版本
